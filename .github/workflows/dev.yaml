@@ -139,13 +139,13 @@ jobs:
         run: terraform fmt -recursive
 
       - name: Terraform Init
-        run: terraform -chdir=prod init
+        run: terraform init
 
       - name: Terraform Validate
-        run: terraform -chdir=prod validate
+        run: terraform validate
 
       - name: Terraform Plan
-        run: terraform -chdir=prod plan
+        run: terraform plan
 
       # - name: Wait for manual approval
       #   run: |
@@ -172,7 +172,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
-        run: terraform -chdir=prod init
+        run: terraform init
         
       - name: Terraform Apply
-        run: terraform -chdir=prod apply -auto-approvegit
+        run: terraform apply -target=module.lab01-nonprod -target=module.lab02-nonprod -target=module.lab03-nonprod --auto-approve
