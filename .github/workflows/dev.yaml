@@ -1,12 +1,12 @@
 name: IIoT CICD Pipeline
 
-# on:
-#   workflow_dispatch:  # Manually trigger the workflow
-
 on:
- pull_request:
-   branches:
-     - main
+  workflow_dispatch:  # Manually trigger the workflow
+
+# on:
+#  pull_request:
+#    branches:
+#      - main
 
 jobs:
   Build:
@@ -175,4 +175,4 @@ jobs:
         run: terraform -chdir=prod init
         
       - name: Terraform Apply
-        run: terraform -chdir=prod apply -auto-approve
+        run: terraform -chdir=prod apply -auto-approvegit
